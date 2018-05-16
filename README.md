@@ -1,4 +1,4 @@
-![maze](https://github.com/mazeframework/site-assets/raw/master/images/maze-horizontal.png)
+![maze](https://github.com/mazeframework/mazeframework.github.io/blob/master/assets/images/maze.svg)
 
 **Productivity. Performance. Happiness.**
 
