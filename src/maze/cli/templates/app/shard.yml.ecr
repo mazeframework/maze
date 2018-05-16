@@ -1,0 +1,63 @@
+name: <%= @name %>
+version: 0.1.0
+
+authors:
+  - <%= @author %> <<%= @email %>>
+
+crystal: <%= Crystal::VERSION %>
+
+license: UNLICENSED
+
+targets:
+  <%= @name %>:
+    main: src/<%= @name %>.cr
+
+  maze:
+    main: lib/maze/src/maze/cli.cr
+
+dependencies:
+  maze:
+    github: mazeframework/maze
+    branch: master
+    #version: <%= Maze::VERSION %>
+
+  citrine-i18n:
+    github: amberframework/citrine-i18n
+    version: 0.1.0
+
+<% case @model when "crecto" -%>
+  crecto:
+    github: Crecto/crecto
+    version: ~> 0.8.1
+<% else -%>
+  granite_orm:
+    github: amberframework/granite-orm
+    version: ~> 0.9.1
+<% end -%>
+
+  quartz_mailer:
+    github: amberframework/quartz-mailer
+    version: ~> 0.5.1
+
+  jasper_helpers:
+    github: amberframework/jasper-helpers
+    version: ~> 0.2.0
+
+<% case @database when "pg" -%>
+  pg:
+    github: will/crystal-pg
+    version: ~> 0.14.1
+<% when "mysql" -%>
+  mysql:
+    github: crystal-lang/crystal-mysql
+    version: ~> 0.4.0
+<% when "sqlite" -%>
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+    version: ~> 0.9.0
+<% end -%>
+
+development_dependencies:
+  garnet_spec:
+    github: amberframework/garnet-spec
+    version: ~> 0.1.1

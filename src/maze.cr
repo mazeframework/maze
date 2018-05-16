@@ -1,0 +1,25 @@
+require "http"
+require "logger"
+require "json"
+require "colorize"
+require "random/secure"
+require "kilt"
+require "kilt/slang"
+require "redis"
+require "compiled_license"
+require "inflector"
+require "./maze/version"
+require "./maze/controller/**"
+require "./maze/dsl/**"
+require "./maze/exceptions/**"
+require "./maze/extensions/**"
+require "./maze/router/context"
+require "./maze/pipes/**"
+require "./maze/server/**"
+require "./maze/validators/**"
+require "./maze/websockets/**"
+require "./maze/environment"
+
+module Maze
+  include Maze::Environment
+end

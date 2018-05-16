@@ -1,0 +1,6 @@
+require "jasper_helpers"
+
+class ApplicationController < Maze::Controller::Base
+  include JasperHelpers
+  LAYOUT = "application.<%= @language %>"
+end

@@ -1,0 +1,2 @@
+- active = context.request.path == "/<%= Inflector.pluralize(@name) %>" ? "active" : ""
+a class="nav-item #{active}" href="/<%= Inflector.pluralize(@name) %>" <%= Inflector.pluralize(display_name) %>

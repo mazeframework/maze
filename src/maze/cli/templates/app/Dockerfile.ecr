@@ -1,0 +1,12 @@
+FROM mazeframework/maze:v<%= Maze::VERSION %>
+
+WORKDIR /app
+
+COPY shard.* /app/
+RUN crystal deps
+
+COPY . /app
+
+RUN rm -rf /app/node_modules
+
+CMD maze watch

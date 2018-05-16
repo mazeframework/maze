@@ -1,0 +1,14 @@
+Quartz.config do |c|
+  c.smtp_enabled = Maze.settings.smtp.enabled
+
+  c.logger = Maze.settings.logger.dup
+  c.logger.progname = "Email"
+
+  c.smtp_address = ENV["SMTP_ADDRESS"]?  || Maze.settings.smtp.host
+  c.smtp_port    = ENV["SMTP_PORT"]?     || Maze.settings.smtp.port
+  c.username     = ENV["SMTP_USERNAME"]? || Maze.settings.smtp.username
+  c.password     = ENV["SMTP_PASSWORD"]? || Maze.settings.smtp.password
+
+  c.use_tls = ! c.password.blank?
+  c.use_authentication = ! c.password.blank?
+end

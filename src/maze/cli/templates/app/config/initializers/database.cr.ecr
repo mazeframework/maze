@@ -1,0 +1,31 @@
+<% if @model == "granite" -%>
+require "granite_orm/adapter/<%= @database %>"
+
+Granite::ORM.settings.database_url = Maze.settings.database_url
+Granite::ORM.settings.logger = Maze.settings.logger.dup
+Granite::ORM.settings.logger.progname = "Granite"
+
+<% else -%>
+require "<%= @database %>"
+require "crecto"
+Query = Crecto::Repo::Query
+
+module Repo
+  extend Crecto::Repo
+
+  config do |c|
+<% case @database
+     when "pg" -%>
+    c.adapter = Crecto::Adapters::Postgres
+<%   when "mysql" -%>
+    c.adapter = Crecto::Adapters::Mysql
+<%   when "sqlite" -%>
+    c.adapter = Crecto::Adapters::SQLite3
+<% end -%>
+
+    c.uri = Maze.settings.database_url
+  end
+end
+
+Crecto::DbLogger.set_handler(Maze.settings.logger.dup)
+<% end -%>
