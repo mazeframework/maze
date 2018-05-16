@@ -14,7 +14,7 @@ _Maze makes building web applications fast, simple, and enjoyable - with fewer b
 
 **Maze** is a web application framework written in [Crystal](http://www.crystal-lang.org) inspired by Kemal, Rails, Phoenix and other popular application frameworks and based on [Amber](https://amberframework.org).  The purpose of Maze is to extend Amber with specific features and design goals that are outside of, and incompatible with, the core goals of the Amber project.
 
-Maze has a number of fundamental differences from Amber which meant creating a new framework was a better option than trying to modify Amber and retain it's core principles. With Amber anyone coming from a Rails background will feel right at home as the Amber application layout has many similarities with Rails.  In particular Model, Views and Controllers are contained in app/models, app/views and app/controllers directories respectively.
+Maze has a number of fundamental differences from Amber which meant creating a new framework was a better option than trying to modify Amber whilst retain Amber's core principles. With Amber anyone coming from a Rails background will feel right at home as the Amber application layout has many similarities with Rails.  In particular Model, Views and Controllers are contained in app/models, app/views and app/controllers directories respectively.
 
 Maze takes a modular approach whereby the code is organised in modules for a feature or module of your application.  Anyone who has used MEAN.js will be familiar with this code layout scheme.  For example given an application feature to perform CRUD operations on Post objects (e.g. title, bodytext etc.)  The code layout in Maze for the Post module would be as such (using the slang template engine);
 
@@ -30,7 +30,7 @@ src/modules/post/index.slang
 src/modules/post/new.slang
 ```
 
-This does not preclude models, views and controllers in the src/models, src/views and src/controllers directories.  That layout scheme is still available and a Maze app can contain code in either layout.  The difference between the two layout schemes is in the render method.  For the standard Rails/Amber paradigm render a template (and partial) with the **render** method.  For the modular paradigm render a template (and partial) with the **render_module** method.
+This does not preclude models, views and controllers in the src/models, src/views and src/controllers directories.  That layout scheme is still available and a Maze app can contain code in both layouts simultaneously.  The difference between the two layout schemes is in the render() method.  For the standard Rails/Amber paradigm render a template (and partial) with the **render** method.  For the modular paradigm render a template (and partial) with the **render_module** method.
 
 Maze borrows concepts that have already been battle tested and successful, and embraces new concepts through team and community collaboration and analysis, which also aligns with Crystal's philosophy.
 
@@ -108,11 +108,12 @@ Code Triage? Join us on [codetriage](https://www.codetriage.com/mazeframework/ma
 Maze is a community effort and we want You to be part of it. [Join Maze Community!](https://github.com/mazeframework/maze/blob/master/.github/CONTRIBUTING.md)
 
 1. Fork it https://github.com/mazeframework/maze/fork
-2. Create your feature branch `git checkout -b my-new-feature`
-3. Write and execute specs `crystal spec`
-4. Commit your changes `git commit -am 'Add some feature'`
-5. Push to the branch `git push origin my-new-feature`
-6. Create a new Pull Request
+2. Clone your fork to your local workstation
+3. Create your feature branch `git checkout -b my-new-feature`
+4. Write and execute specs `crystal spec`
+5. Commit your changes `git commit -am 'Add some feature'`
+6. Push to the branch `git push origin my-new-feature`
+7. Create a new Pull Request
 
 ## Contributors
 
