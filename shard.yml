@@ -14,9 +14,9 @@ targets:
     main: src/maze/cli.cr
 
 dependencies:
-  amber_router:
-    github: amberframework/router
-    version: ~> 0.0.3
+  maze_router:
+    github: mazeframework/router
+    #version: ~> 0.0.3
 
   cli:
     github: amberframework/cli

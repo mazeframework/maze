@@ -18,7 +18,7 @@ module Maze::Recipes
     @template : String | Nil
     @recipe : String
 
-    def initialize(@name, @database = "pg", @language = "slang", @model = "granite", @recipe = "default")
+    def initialize(@name, @database = "pg", @language = "slang", @model = "granite", @recipe = "base")
       @db_url = ""
       @wait_for = ""
       @database_name_base = generate_database_name_base

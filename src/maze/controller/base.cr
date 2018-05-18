@@ -8,6 +8,7 @@ module Maze::Controller
     include Helpers::CSRF
     include Helpers::Redirect
     include Helpers::Render
+    include Helpers::RenderModule
     include Helpers::Responders
     include Helpers::Route
     include Helpers::I18n

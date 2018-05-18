@@ -19,7 +19,7 @@ module Maze::Recipes
   class Recipe
     getter name : String
     getter directory : String
-    getter recipe : String | Nil
+    getter recipe : String
 
     def self.can_generate?(template_type, recipe)
       return false unless ["app", "controller", "model", "scaffold"].includes? template_type
@@ -53,8 +53,8 @@ module Maze::Recipes
       case template
       when "app"
         if options
-          log_message "Rendering App #{name} in #{directory} from #{options.r}"
-          App.new(name, options.d, options.t, options.m, options.r).render(directory, list: true, color: true)
+          log_message "Rendering App #{name} in #{directory} from #{recipe}"
+          App.new(name, options.d, options.t, options.m, recipe).render(directory, list: true, color: true)
           if options.deps?
             log_message "Installing Dependencies"
             Maze::CLI::Helpers.run("cd #{name} && shards update")

@@ -30,14 +30,15 @@ module Maze::Recipes
     end
 
     def recipe_source
-      CLI.config.recipe_source || "https://raw.githubusercontent.com/mazeframework/recipes/master/"
+      CLI.config.recipe_source || "https://raw.githubusercontent.com/mazeframework/recipes/master/dist"
     end
 
     def fetch_url(template_path)
       # download the recipe zip file from the github repository
       HTTP::Client.get("#{recipe_source}/#{@name}.zip") do |response|
         if response.status_code != 200
-          CLI.logger.error "Could not find that recipe #{@name}", "Generate", :light_red
+          CLI.logger.error "Could not find that recipe #{@name} from #{recipe_source}/#{@name}.zip", "Generate", :light_red
+          #CLI.logger.error "#{response.inspect}", "Generate", :light_red
           return nil
         end
 
