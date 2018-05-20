@@ -12,14 +12,16 @@ _Maze makes building web applications fast, simple, and enjoyable - with fewer b
 
 # Welcome to Maze
 
-**Maze** is a web application framework written in [Crystal](http://www.crystal-lang.org) inspired by Kemal, Rails, Phoenix and other popular application frameworks and based on [Amber](https://amberframework.org).  The purpose of Maze is to extend Amber with specific features and design goals that are outside of, and incompatible with, the core goals of the Amber project.
+**Maze** is a web application framework written in [Crystal](http://www.crystal-lang.org) inspired by Kemal, Rails, Phoenix and other popular application frameworks and based on [Amber](https://amberframework.org).  The purpose of Maze is to extend Amber with specific features and design goals that are outside of, and sometimes incompatible with, the core goals of the Amber project.  
 
 # Work In Progress
 
 This is very much a work in progress, especially documentation.  Most Amber documentation will still apply.
 Links may not work yet until all elements are imported from Amber
 
-Maze has a number of fundamental differences from Amber which meant creating a new framework was a better option than trying to modify Amber whilst retaining Amber's core principles.  The most important difference is a modular code layout rather than the code layout developers coming from Rails will be familiar with.  With Amber, anyone coming from a Rails background will feel right at home as the Amber application layout has many similarities with Rails, e.g. Model, Views and Controllers are contained in app/models, app/views and app/controllers directories respectively.  If what you are looking for is a Rails like experience then you may be better off heading over to [Amber](https://amberframework.org).
+Maze has a number of fundamental differences from Amber which meant creating a new framework was a better option than trying to modify Amber whilst retaining Amber's core principles.  Maze can also provide an agile testing ground for new features that may or not be integrated into the Amber project at a later date.
+
+The most important difference between Amber and Maze is a modular code layout as default rather than the code layout developers coming from Rails will be familiar with.  With Amber, anyone coming from a Rails background will feel right at home as the default Amber application layout has many similarities with Rails, e.g. Model, Views and Controllers are contained in app/models, app/views and app/controllers directories respectively.  If what you are looking for is a Rails like experience then you may be better off heading over to [Amber](https://amberframework.org).  
 
 Maze takes a modular approach whereby the code for a feature is organised in modules.  Modules are a core principle of OOP and anyone who has used MEAN.js will be familiar with this code layout scheme.  One of the principle advantages is that all artifacts for a particular feature are located in the same folder, making navigation between the different artifacts easier, especially in large code bases.  For example given an application feature to perform CRUD operations on Post objects (e.g. title, bodytext etc.)  The code layout in Maze for the Post module would be as such (using the slang template engine);
 
@@ -36,6 +38,8 @@ src/modules/post/new.slang
 ```
 
 This does not preclude models, views and controllers in the src/models, src/views and src/controllers directories.  That layout scheme is still available and a Maze app can contain code in both layouts simultaneously.  The difference between the two layout schemes is in the render() method.  For the standard Rails/Amber paradigm render a template (and partial) with the **render** method.  For the modular paradigm render a template (and partial) with the **render_module** method.
+
+Amber has a recipes feature whereby an application can be created with a modular layout.  However in future it may prove difficult to maintain recipes that need to support both the default (Rails like) layout and the modular layout.
 
 ## Future divergence
 
