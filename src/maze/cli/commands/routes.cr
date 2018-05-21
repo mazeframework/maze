@@ -44,7 +44,7 @@ module Maze::CLI
 
       private def parse_routes
         # parse each routes file in modules
-        Dir.glob(["src/modules/*/*_routes.cr"]) do |file|
+        Dir.glob(["src/modules/**/*_routes.cr"]) do |file|
           parse_routes_file(file)
         end
         # read global routes last
