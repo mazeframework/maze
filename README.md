@@ -17,9 +17,7 @@ _Maze makes building web applications fast, simple, and enjoyable - with fewer b
 # Work In Progress
 
 This is very much a work in progress, especially documentation.  Most Amber documentation will still apply.
-Links may not work yet until all elements are imported from Amber
-
-Maze has a number of fundamental differences from Amber which meant creating a new framework was a better option than trying to modify Amber whilst retaining Amber's core principles.  Maze can also provide an agile testing ground for new features that may or not be integrated into the Amber project at a later date.
+Links may not work yet until all elements are imported from Amber.  Maze is primarily meant to be an agile testing ground for new features that may or not be integrated into the Amber project at a later date.  Amber has an existing user community so care needs to be taken to ensure things do not break for existing users.
 
 The most important difference between Amber and Maze is a modular code layout as default rather than the code layout developers coming from Rails will be familiar with.  With Amber, anyone coming from a Rails background will feel right at home as the default Amber application layout has many similarities with Rails, e.g. Model, Views and Controllers are contained in app/models, app/views and app/controllers directories respectively.  If what you are looking for is a Rails like experience then you may be better off heading over to [Amber](https://amberframework.org).  
 
@@ -41,9 +39,9 @@ This does not preclude models, views and controllers in the src/models, src/view
 
 Amber has a recipes feature whereby an application can be created with a modular layout.  However in future it may prove difficult to maintain recipes that need to support both the default (Rails like) layout and the modular layout.
 
-## Future divergence
+## Principle enhancements
 
-Over time Maze will diverge from Amber in other ways.  These divergences will probably be;
+At the moment the principle enhancements envisioned are;
 
 - bare bones base system
 - hierarchical recipe/plugin generators
