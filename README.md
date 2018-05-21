@@ -141,7 +141,7 @@ Use Maze badge
 
 ## Contributing
 
-Contributing to Maze can be a rewarding way to learn, teach, and build experience in just about any skill you can imagine. You don’t have to become a lifelong contributor to enjoy participating in Maze.
+Contributing to Amber and Maze can be a rewarding way to learn, teach, and build experience in just about any skill you can imagine. You don’t have to become a lifelong contributor to enjoy participating in Amber and Maze.  If you develop new features, bug fixes or improvements to Maze please consider submitting your changes to Amber as well, and vice-versa.
 
 Tracking issues? Check our [project board](https://github.com/orgs/mazeframework/projects/1?fullscreen=true).
 
@@ -155,9 +155,32 @@ Maze is a community effort and we want You to be part of it. [Join Maze Communit
 2. Clone your fork to your local workstation
 3. Create your feature branch `git checkout -b my-new-feature`
 4. Write and execute specs `crystal spec`
-5. Commit your changes `git commit -am 'Add some feature'`
-6. Push to the branch `git push origin my-new-feature`
-7. Create a new Pull Request
+5. Verify with Docker `docker-compose build spec; docker-compose run spec`
+6. Commit your changes `git commit -am 'Add some feature'`
+7. Push to the branch `git push origin my-new-feature`
+8. Create a new Pull Request
+
+### Keep your fork up to date
+
+For existing forks, before creating a new branch ensure your master branch is up to date.
+
+```
+# create upstream remote if not already created
+git remote add upstream git@github.com:mazeframework/maze.git
+
+# fetch the upstream and merge the master branches
+git checkout master
+git fetch upstream
+git merge upstream/master
+git checkout -b my-new-feature
+```
+
+If developing a new feature takes a long time you will need to rebase your branch from time to time.
+Fetch and merge upstream/master as per the instructions above and rebase with
+```
+git checkout my-new-feature
+git rebase master
+```
 
 ## Contributors
 
