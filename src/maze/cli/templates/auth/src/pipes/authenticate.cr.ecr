@@ -2,7 +2,7 @@ class HTTP::Server::Context
   property current_<%= @name %> : <%= class_name %>?
 end
 
-class Authenticate < Maze::Pipe::Base
+class Authenticate < Amber::Pipe::Base
   PUBLIC_PATHS = ["/", "/signin", "/session", "/signup", "/registration"]
 
   def call(context)
@@ -28,5 +28,4 @@ class Authenticate < Maze::Pipe::Base
     # Example, if only a few private paths exist
     # return false if ["/secret", "/super/secret", "/private"].includes?(path)
   end
-
 end

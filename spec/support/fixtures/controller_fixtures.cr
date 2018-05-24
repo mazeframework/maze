@@ -1,4 +1,4 @@
-class RedirectController < Maze::Controller::Base
+class RedirectController < Amber::Controller::Base
   def index
     "Index"
   end
@@ -20,7 +20,7 @@ class RedirectController < Maze::Controller::Base
   end
 end
 
-class HelloController < Maze::Controller::Base
+class HelloController < Amber::Controller::Base
   @total : Int32 = 0
 
   before_action do
@@ -66,7 +66,7 @@ class HelloController < Maze::Controller::Base
   end
 
   def say_hello
-    "Hello Maze!"
+    "Hello Amber!"
   end
 
   def client_ip_address
@@ -82,13 +82,13 @@ class HelloController < Maze::Controller::Base
   end
 end
 
-class RenderController < Maze::Controller::Base
+class RenderController < Amber::Controller::Base
   def render_template_page
-    render("spec/support/sample/views/test/test.slang", layout: false)
+    render(path: "spec/support/sample/views", template: "test/test.slang", layout: false)
   end
 
   def render_partial
-    render(partial: "spec/support/sample/views/test/_test.slang")
+    render(path: "spec/support/sample/views", partial: "test/_test.slang")
   end
 
   def render_with_layout
@@ -100,20 +100,20 @@ class RenderController < Maze::Controller::Base
   end
 
   def render_with_csrf
-    render(partial: "spec/support/sample/views/test/_form.slang")
+    render(path: "spec/support/sample/views", partial: "test/_form.slang")
   end
 
   def render_with_flash
     flash["error"] = "Displays error Message!"
-    render("spec/support/sample/views/test/flash.slang", layout: false)
+    render(path: "spec/support/sample/views", template: "test/flash.slang", layout: false)
   end
 end
 
-class ResponsesController < Maze::Controller::Base
+class ResponsesController < Amber::Controller::Base
   def index
     respond_with do
-      html "<html><body><h1>Elorest <3 Maze</h1></body></html>"
-      json type: "json", name: "Mazeator"
+      html "<html><body><h1>Elorest <3 Amber</h1></body></html>"
+      json type: "json", name: "Amberator"
       xml "<xml><body><h1>Sort of xml</h1></body></xml>"
       text "Hello I'm text!"
     end
@@ -121,8 +121,8 @@ class ResponsesController < Maze::Controller::Base
 
   def show
     respond_with do
-      html "<html><body><h1>Elorest <3 Maze</h1></body></html>"
-      json type: "json", name: "Mazeator"
+      html "<html><body><h1>Elorest <3 Amber</h1></body></html>"
+      json type: "json", name: "Amberator"
     end
   end
 
@@ -131,33 +131,4 @@ class ResponsesController < Maze::Controller::Base
       json type: "json", error: "Unauthorized"
     end
   end
-
-  def proc_html
-    respond_with do
-      html ->{"<html><body><h1>Elorest <3 Maze</h1></body></html>"}
-      json type: "json", name: "Mazeator"
-    end
-  end
-
-  def proc_redirect
-    respond_with do
-      html ->{redirect_to "/some_path"}
-      json type: "json", name: "Mazeator"
-    end
-  end
-
-  def proc_redirect_flash
-    respond_with do
-      html ->{redirect_to "/some_path", flash: {"success" => "maze is the bizness"}}
-      json type: "json", name: "Mazeator"
-    end
-  end
-
-  def proc_perm_redirect
-    respond_with do
-      html ->{redirect_to "/some_path", status: 301}
-      json type: "json", name: "Mazeator"
-    end
-  end
-
 end

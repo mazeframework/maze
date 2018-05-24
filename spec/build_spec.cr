@@ -1,13 +1,12 @@
-{% if flag?(:run_build_tests) %}
 require "./spec_helper"
 require "./support/helpers/cli_helper"
 
 include CLIHelper
 
-module Maze::CLI
+module Amber::CLI
   begin
     describe "building a generated app" do
-      ENV["MAZE_ENV"] = "test"
+      ENV["AMBER_ENV"] = "test"
 
       cleanup
       scaffold_app(TESTING_APP)
@@ -26,24 +25,23 @@ module Maze::CLI
       MainCommand.run ["generate", "channel", "Falcon"]
 
       prepare_yaml(Dir.current)
-      prepare_db_yml(CLIHelper::BASE_ENV_PATH) #if ENV["CI"]? == "false"
-      Maze::CLI.env = "test"
-      Maze::CLI.settings.logger = Maze::Environment::Logger.new(nil)
+      Amber::CLI.env = "test"
+      Amber::CLI.settings.logger = Amber::Environment::Logger.new(nil)
 
-      puts "====== START Creating database for #{TEST_APP_NAME} ======"
-      MainCommand.run ["db", "drop"]
-      MainCommand.run ["db", "create", "migrate"]
-      puts "====== DONE Database created #{TEST_APP_NAME} ======"
+      puts "RUNNING: amber db drop create migrate - started..."
+      MainCommand.run ["db", "drop", "create", "migrate"]
 
-      puts "RUNNING: shard update started..."
-      `shards update`
+      puts "RUNNING: shards update - started..."
+      system("shards update")
 
-      puts "RUNNING: shard build #{TESTING_APP} - started..."
-      build_result = `shards build #{TEST_APP_NAME}`
-      puts "#{TESTING_APP} build completed..."
+      puts "RUNNING: shards build #{TEST_APP_NAME} - started..."
+      system("shards build #{TEST_APP_NAME}")
+
+      it "check formatting on generated files" do
+        system("crystal tool format --check src").should be_true
+      end
 
       it "generates a binary" do
-        puts build_result unless File.exists?("bin/#{TEST_APP_NAME}")
         File.exists?("bin/#{TEST_APP_NAME}").should be_true
       end
 
@@ -71,4 +69,3 @@ module Maze::CLI
     cleanup
   end
 end
-{% end %}

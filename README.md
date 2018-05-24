@@ -12,7 +12,7 @@ _Maze makes building web applications fast, simple, and enjoyable - with fewer b
 
 # Welcome to Maze
 
-**Maze** is a web application framework written in [Crystal](http://www.crystal-lang.org) inspired by Kemal, Rails, Phoenix and other popular application frameworks and based on [Amber](https://amberframework.org).  The purpose of Maze is to extend Amber with specific features and design goals that are outside of, and sometimes incompatible with, the core goals of the Amber project.  
+**Maze** is a web application framework written in [Crystal](https://crystal-lang.org) inspired by Kemal, Rails, Phoenix and other popular application frameworks and based on [Amber](https://amberframework.org).  The purpose of Maze is to extend Amber with specific features and design goals that are outside of, and sometimes incompatible with, the core goals of the Amber project.  
 
 # Work In Progress
 
@@ -80,7 +80,7 @@ Another goal of Maze will be a distinct separation between core Maze artifacts a
 
 ## Community
 
-Questions? Join our IRC channel [#maze](http://webchat.freenode.net/?channels=#maze) and [Gitter room](https://gitter.im/mazeframework/maze) or ask on Stack Overflow under the [maze-framework](https://stackoverflow.com/questions/tagged/maze-framework) tag.
+Questions? Join our IRC channel [#maze](https://webchat.freenode.net/?channels=#maze) and [Gitter room](https://gitter.im/mazeframework/maze) or ask on Stack Overflow under the [maze-framework](https://stackoverflow.com/questions/tagged/maze-framework) tag.
 
 Guidelines? We have adopted the Contributor Covenant to be our [CODE OF CONDUCT](.github/CODE_OF_CONDUCT.md) for Maze.
 
@@ -123,20 +123,20 @@ dependencies:
     github: mazeframework/maze
 ```
 
-[Read more about Maze CLI installation guide](https://mazeframework.org/guides/getting-started/Installation/README.md#installation)
+[Read more about Maze CLI installation guide](https://mazeframework.gitbook.io/maze/guides/installation)
 
-[Read Maze guide from zero to deploy](https://mazeframework.org/guides/getting-started/quickstart/zero-to-deploy.md#zero-to-deploy)
+[Read Maze guide from zero to deploy](https://mazeframework.gitbook.io/maze/guides/getting-started/quickstart)
 
-[Read Maze CLI commands usage](https://mazeframework.org/guides/getting-started/cli/README.md#cli-readme)
+[Read Maze CLI commands usage](https://mazeframework.gitbook.io/maze/cli)
 
 ## Have a Maze-based Project?
 
 Use Maze badge
 
-![Maze Framework](https://img.shields.io/badge/using-maze%20framework-orange.svg)
+[![Maze Framework](https://img.shields.io/badge/using-maze-framework-orange.svg)](https://mazeframework.gitbook.io)
 
 ```markdown
-[![Maze Framework](https://img.shields.io/badge/using-maze%20framework-orange.svg)](Your project url)
+[![Maze Framework](https://img.shields.io/badge/using-maze-framework-orange.svg)](https://mazeframework.gitbook.io)
 ```
 
 ## Contributing

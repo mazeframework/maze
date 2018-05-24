@@ -3,20 +3,20 @@ require "file_utils"
 module CLIHelper
   BASE_ENV_PATH       = "./config/environments/"
   ENV_CONFIG_PATH     = "#{TESTING_APP}/config/environments/"
-  CURRENT_ENVIRONMENT = ENV["MAZE_ENV"] ||= "test"
+  CURRENT_ENVIRONMENT = ENV["AMBER_ENV"] ||= "test"
   ENVIRONMENTS        = %w(development test)
 
   def cleanup
     Dir.cd CURRENT_DIR
     if Dir.exists?(TESTING_APP)
-      FileUtils.rm_r(TESTING_APP)
+      FileUtils.rm_rf(TESTING_APP)
     end
   end
 
   def prepare_test_app
     cleanup
     scaffold_app("#{TESTING_APP}", "-d", "sqlite")
-    environment_yml(ENV["MAZE_ENV"], "#{Dir.current}/config/environments/")
+    environment_yml(ENV["AMBER_ENV"], "#{Dir.current}/config/environments/")
   end
 
   def dirs(for app)
@@ -48,8 +48,8 @@ module CLIHelper
     YAML.parse(File.read(path))
   end
 
-  def maze_yml(path = TESTING_APP)
-    YAML.parse(File.read("#{path}/.maze.yml"))
+  def amber_yml(path = TESTING_APP)
+    YAML.parse(File.read("#{path}/.amber.yml"))
   end
 
   def shard_yml(path = TESTING_APP)
@@ -77,9 +77,11 @@ module CLIHelper
   end
 
   def prepare_yaml(path)
-    shard = File.read("#{path}/shard.yml")
-    shard = shard.gsub("github: mazeframework/maze\n", "path: ../../\n")
-    File.write("#{path}/shard.yml", shard)
+    if File.exists?("#{path}/shard.yml")
+      shard = File.read("#{path}/shard.yml")
+      shard = shard.gsub("github: amberframework/amber\n", "path: ../../\n")
+      File.write("#{path}/shard.yml", shard)
+    end
   end
 
   def prepare_db_yml(path = ENV_CONFIG_PATH)
@@ -89,13 +91,13 @@ module CLIHelper
   end
 
   def recipe_app(app_name, *options)
-    Maze::CLI::MainCommand.run ["new", app_name] | options.to_a
+    Amber::CLI::MainCommand.run ["new", app_name] | options.to_a
     Dir.cd(app_name)
     prepare_yaml(Dir.current)
   end
 
   def scaffold_app(app_name, *options)
-    Maze::CLI::MainCommand.run ["new", app_name] | options.to_a
+    Amber::CLI::MainCommand.run ["new", app_name] | options.to_a
     Dir.cd(app_name)
     prepare_yaml(Dir.current)
   end

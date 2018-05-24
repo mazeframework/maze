@@ -1,7 +1,7 @@
 require "./controller"
 
-module Maze::CLI::Scaffold
-  class GraniteController < Maze::CLI::Scaffold::Controller
+module Amber::CLI::Scaffold
+  class GraniteController < Amber::CLI::Scaffold::Controller
     directory "#{__DIR__}/controller/granite"
   end
 end

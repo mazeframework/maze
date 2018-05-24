@@ -1,8 +1,8 @@
 require "../field.cr"
 
-module Maze::CLI::Scaffold
+module Amber::CLI::Scaffold
   class View < Teeplate::FileTree
-    include Maze::CLI::Helpers
+    include Amber::CLI::Helpers
     directory "#{__DIR__}/view"
 
     @name : String
