@@ -1,9 +1,9 @@
 require "../field.cr"
 require "inflector"
 
-module Amber::CLI::Scaffold
+module Maze::CLI::Scaffold
   class Controller < Teeplate::FileTree
-    include Amber::CLI::Helpers
+    include Maze::CLI::Helpers
 
     @name : String
     @fields : Array(Field)
