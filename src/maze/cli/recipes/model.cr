@@ -12,7 +12,7 @@ module Maze::Recipes
     @model : String = CLI.config.model
 
     @template : String | Nil
-    @recipe : String | Nil
+    @recipe : String
 
     def initialize(@name, @recipe, fields)
       @fields = fields.map { |field| Maze::CLI::Field.new(field, database: @database) }

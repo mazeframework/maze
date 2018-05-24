@@ -14,7 +14,6 @@ require "./scaffold/controller"
 require "./scaffold/view"
 
 module Maze::Recipes
-  MAZE_RECIPE_FOLDER = ENV["HOME"] + "/.maze/recipe_cache"
 
   class Recipe
     getter name : String
@@ -22,7 +21,7 @@ module Maze::Recipes
     getter recipe : String
 
     def self.can_generate?(template_type, recipe)
-      return false unless ["app", "controller", "model", "scaffold"].includes? template_type
+      return false unless ["controller", "model", "scaffold"].includes? template_type
 
       if recipe.nil?
         return false
@@ -54,7 +53,9 @@ module Maze::Recipes
       when "app"
         if options
           log_message "Rendering App #{name} in #{directory} from #{recipe}"
-          App.new(name, options.d, options.t, options.m, recipe).render(directory, list: true, color: true)
+          app = App.new(name, options.d, options.t, options.m, recipe)
+          app.fetch_recipe(directory)
+          app.render(directory, list: true, color: true)
           if options.deps?
             log_message "Installing Dependencies"
             Maze::CLI::Helpers.run("cd #{name} && shards update")
