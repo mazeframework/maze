@@ -4,6 +4,7 @@ module Maze::Recipes
 
     getter database_name_base
     getter template
+    getter recipe
 
     @name : String
     @database : String
@@ -25,8 +26,10 @@ module Maze::Recipes
       @author = fetch_author
       @email = fetch_email
       @github_name = fetch_github_name
+    end
 
-      @template = RecipeFetcher.new("app", @recipe).fetch
+    def fetch_recipe(directory)
+      @template = RecipeFetcher.new("app", recipe, directory).fetch
     end
 
     # setup the Liquid context
