@@ -10,7 +10,7 @@ module Maze::CLI
         string "-d", desc: "database", any_of: %w(pg mysql sqlite), default: "pg"
         string "-t", desc: "template language", any_of: %w(slang ecr), default: "slang"
         string "-m", desc: "model type", any_of: %w(granite crecto), default: "granite"
-        string "-r", desc: "recipe", default: "base"
+        string "-r", desc: "recipe", default: "mazeframework/base"
         bool "--deps", desc: "installs deps, (shards update)", default: false
         bool "--no-color", desc: "Disable colored output", default: false
         help
