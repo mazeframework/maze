@@ -11,24 +11,31 @@ module Maze::Controller::Helpers
       {{ filename = template || partial }}
 
       {% if filename.id.split("/").size > 1 %}
-        %content = render_template("#{{{filename}}}", {{path}})
+        %content = render_module_template("#{{{filename}}}", {{path}})
       {% else %}
         {{ short_path = folder.gsub(/^.+?(?:controllers|views)\//, "") }}
         {% if folder.id.ends_with?(".ecr") %}
-          %content = render_template("#{{{short_path.gsub(/\/[^\.\/]+\.ecr/, "")}}}/#{{{filename}}}")
+          %content = render_module_template("#{{{short_path.gsub(/\/[^\.\/]+\.ecr/, "")}}}/#{{{filename}}}")
         {% else %}
-          %content = render_template("#{{{short_path.gsub(/\_controller\.cr|\.cr/, "")}}}/#{{{filename}}}")
+          %content = render_module_template("#{{{short_path.gsub(/\_controller\.cr|\.cr/, "")}}}/#{{{filename}}}")
         {% end %}
       {% end %}
 
       # Render Layout from the location given by path
       {% if layout && !partial %}
         content = %content
-        render_template("#{{{path}}}/layouts/#{{{layout.class_name == "StringLiteral" ? layout : LAYOUT}}}")
+        render_module_template("#{{{path}}}/layouts/#{{{layout.class_name == "StringLiteral" ? layout : LAYOUT}}}")
       {% else %}
         %content
       {% end %}
     end
 
+    private macro render_module_template(filename, path = "src/views")
+      {% if filename.id.split("/").size > 2 %}
+        Kilt.render("{{filename.id}}")
+      {% else %}
+        Kilt.render("#{{{path}}}/{{filename.id}}")
+      {% end %}
+    end
   end
 end
