@@ -116,7 +116,7 @@ module Maze
       end
 
       describe "#match_by_controller_action" do
-        handler = ->(context : HTTP::Server::Context) {}
+        handler = ->(_context : HTTP::Server::Context) {}
         router = Router.new
         route_a = Route.new("GET", "/fake", handler, :index, :web, "", "FakeController")
         route_b = Route.new("GET", "/fake/new", handler, :new, :web, "", "FakeController")

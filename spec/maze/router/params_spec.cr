@@ -2,7 +2,6 @@ require "../../../spec_helper"
 
 module Maze::Router
   describe Params do
-    headers = HTTP::Headers.new
     params = multipart_form_post
 
     describe "#[]" do

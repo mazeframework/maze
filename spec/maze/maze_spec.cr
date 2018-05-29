@@ -25,7 +25,6 @@ describe Maze do
       end
 
       it "sets Maze environment from yaml settings file" do
-        current_settings = Maze.settings
         Maze.env = :development
         Maze.settings.name.should eq "development_settings"
       end
@@ -80,7 +79,7 @@ describe Maze do
       it "defines socket endpoint" do
         Maze::Server.router.socket_routes = [] of NamedTuple(path: String, handler: Maze::WebSockets::Server::Handler)
 
-        Maze::Server.configure do |app|
+        Maze::Server.configure do
           pipeline :web do
           end
 

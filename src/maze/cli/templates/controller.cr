@@ -28,7 +28,7 @@ module Maze::CLI
     end
 
     def add_views
-      @actions.each do |action, verb|
+      @actions.each do |action, _|
         FileUtils.mkdir_p("src/views/#{@name}")
         File.touch("src/views/#{@name}/#{action}.#{language}")
       end

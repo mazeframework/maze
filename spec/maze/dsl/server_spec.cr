@@ -8,7 +8,7 @@ module Maze
           server = Maze::Server.instance
           server.handler.pipeline.clear
 
-          Maze::Server.configure do |app|
+          Maze::Server.configure do
             pipeline :custom do
               plug Pipe::Logger.new
               plug Pipe::Error.new
@@ -32,7 +32,7 @@ module Maze
           server = Maze::Server.instance
           server.handler.pipeline.clear
 
-          Maze::Server.configure do |app|
+          Maze::Server.configure do
             pipeline :custom do
               plug Pipe::Logger.new
               plug Pipe::Error.new
@@ -55,7 +55,7 @@ module Maze
           server = Maze::Server.instance
           server.handler.pipeline.clear
 
-          Maze::Server.configure do |app|
+          Maze::Server.configure do
             pipeline :api, :web do
               plug Pipe::Logger.new
               plug Pipe::Error.new
@@ -82,7 +82,7 @@ module Maze
           server = Maze::Server.instance
           server.handler.pipeline.clear
 
-          Maze::Server.configure do |app|
+          Maze::Server.configure do
             pipeline :api do
               plug Pipe::CORS.new
             end

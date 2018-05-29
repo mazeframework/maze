@@ -3,10 +3,10 @@ require "./support/helpers/cli_helper"
 
 include CLIHelper
 
-module Amber::CLI
+module Maze::CLI
   begin
     describe "building a generated app" do
-      ENV["AMBER_ENV"] = "test"
+      ENV["MAZE_ENV"] = "test"
 
       cleanup
       scaffold_app(TESTING_APP)
@@ -25,10 +25,10 @@ module Amber::CLI
       MainCommand.run ["generate", "channel", "Falcon"]
 
       prepare_yaml(Dir.current)
-      Amber::CLI.env = "test"
-      Amber::CLI.settings.logger = Amber::Environment::Logger.new(nil)
+      Maze::CLI.env = "test"
+      Maze::CLI.settings.logger = Maze::Environment::Logger.new(nil)
 
-      puts "RUNNING: amber db drop create migrate - started..."
+      puts "RUNNING: maze db drop create migrate - started..."
       MainCommand.run ["db", "drop", "create", "migrate"]
 
       puts "RUNNING: shards update - started..."

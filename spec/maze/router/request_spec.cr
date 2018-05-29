@@ -64,7 +64,7 @@ module Maze::Router
 
         context "when parsing route params" do
           it "parses params from route" do
-            handler = ->(context : HTTP::Server::Context) {}
+            handler = ->(_context : HTTP::Server::Context) {}
             route = Route.new("GET", "/fake/action/:id/:name", handler, :action, :web, "", "FakeController")
             Maze::Server.router.add(route)
             request = HTTP::Request.new("GET", "/fake/action/123/john")

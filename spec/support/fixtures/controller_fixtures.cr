@@ -1,4 +1,4 @@
-class RedirectController < Amber::Controller::Base
+class RedirectController < Maze::Controller::Base
   def index
     "Index"
   end
@@ -20,7 +20,7 @@ class RedirectController < Amber::Controller::Base
   end
 end
 
-class HelloController < Amber::Controller::Base
+class HelloController < Maze::Controller::Base
   @total : Int32 = 0
 
   before_action do
@@ -66,7 +66,7 @@ class HelloController < Amber::Controller::Base
   end
 
   def say_hello
-    "Hello Amber!"
+    "Hello Maze!"
   end
 
   def client_ip_address
@@ -82,7 +82,7 @@ class HelloController < Amber::Controller::Base
   end
 end
 
-class RenderController < Amber::Controller::Base
+class RenderController < Maze::Controller::Base
   def render_template_page
     render(path: "spec/support/sample/views", template: "test/test.slang", layout: false)
   end
@@ -109,11 +109,11 @@ class RenderController < Amber::Controller::Base
   end
 end
 
-class ResponsesController < Amber::Controller::Base
+class ResponsesController < Maze::Controller::Base
   def index
     respond_with do
-      html "<html><body><h1>Elorest <3 Amber</h1></body></html>"
-      json type: "json", name: "Amberator"
+      html "<html><body><h1>Elorest <3 Maze</h1></body></html>"
+      json type: "json", name: "Mazeator"
       xml "<xml><body><h1>Sort of xml</h1></body></xml>"
       text "Hello I'm text!"
     end
@@ -121,14 +121,42 @@ class ResponsesController < Amber::Controller::Base
 
   def show
     respond_with do
-      html "<html><body><h1>Elorest <3 Amber</h1></body></html>"
-      json type: "json", name: "Amberator"
+      html "<html><body><h1>Elorest <3 Maze</h1></body></html>"
+      json type: "json", name: "Mazeator"
     end
   end
 
   def custom_status_code
     respond_with(403) do
       json type: "json", error: "Unauthorized"
+    end
+  end
+
+  def proc_html
+    respond_with do
+      html ->{"<html><body><h1>Elorest <3 Maze</h1></body></html>"}
+      json type: "json", name: "Amberator"
+    end
+  end
+
+  def proc_redirect
+    respond_with do
+      html ->{redirect_to "/some_path"}
+      json type: "json", name: "Amberator"
+    end
+  end
+
+  def proc_redirect_flash
+    respond_with do
+      html ->{redirect_to "/some_path", flash: {"success" => "maze is the bizness"}}
+      json type: "json", name: "Amberator"
+    end
+  end
+
+  def proc_perm_redirect
+    respond_with do
+      html ->{redirect_to "/some_path", status: 301}
+      json type: "json", name: "Amberator"
     end
   end
 end

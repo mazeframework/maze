@@ -14,7 +14,7 @@ module Maze
 
       it "returns status code 500 for all other exceptions" do
         error = Error.new
-        error.next = ->(context : HTTP::Server::Context) { raise "Oops!" }
+        error.next = ->(_context : HTTP::Server::Context) { raise "Oops!" }
         request = HTTP::Request.new("GET", "/")
 
         Maze::Server.router.draw :web do
